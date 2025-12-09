@@ -8,6 +8,13 @@ app.use(cors());
 app.use(express.json());
 
 // --------------------------
+//     RUTA PRINCIPAL "/"
+// --------------------------
+app.get("/", (req, res) => {
+  res.send("🚀 Backend Todo List funcionando correctamente");
+});
+
+// --------------------------
 //        RUTAS TODO
 // --------------------------
 
