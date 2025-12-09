@@ -64,13 +64,3 @@ CREATE TABLE IF NOT EXISTS todos (
 );
 
 
-Siempre enviar POST con un objeto { title: "nombre tarea" } y no un array de tareas.
-
-¡Listo! Tu backend ya debería funcionar tanto localmente como en Render conectado a Railway MySQL.
-
-
----
-
-Si quieres, puedo hacer **una versión aún más corta y visual**, tipo “README de 1 minuto de lectura” lista para tu repo.  
-
-¿Quieres que haga esa versión?
