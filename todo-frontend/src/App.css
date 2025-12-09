@@ -1,108 +1,121 @@
-/* Fondo general */
+/* App.css */
+
+/* Fuente y fondo general */
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
-  height: 100vh;
 }
 
-/* Contenedor principal */
 .container {
   max-width: 500px;
-  margin: 60px auto;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(15px);
+  margin: 50px auto;
   padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  color: #333;
-  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
-/* Título */
 h1 {
-  font-size: 28px;
-  font-weight: 600;
+  text-align: center;
+  color: #333;
   margin-bottom: 20px;
-  color: #fff;
 }
 
 /* Formulario */
-#todo-form {
+form {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-#todo-input {
+input[type="text"] {
   flex: 1;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
   font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+  border-color: #4a90e2;
   outline: none;
-  background: #fff;
 }
 
-button {
-  padding: 12px 18px;
-  border: none;
-  background: #6c63ff;
-  color: white;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.3s;
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: #fff;
   font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-button:hover {
-  background: #5753d9;
-  transform: scale(1.05);
+button[type="submit"]:hover {
+  background-color: #357abd;
 }
 
-/* Lista */
-#todo-list {
+/* Lista de tareas */
+ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .todo-item {
-  background: rgba(255, 255, 255, 0.7);
-  padding: 12px 14px;
-  margin-bottom: 12px;
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: 0.3s;
+  background-color: #f8f9fb;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
 }
 
 .todo-item:hover {
-  transform: scale(1.02);
+  background-color: #e6f0ff;
 }
 
-/* Texto de la tarea */
+.todo-item input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
 .todo-item span {
   flex: 1;
-  margin-left: 10px;
   font-size: 16px;
+  color: #333;
 }
 
-/* Tareas completadas */
-.completed {
+.todo-item span.completed {
   text-decoration: line-through;
-  color: #777;
+  color: #999;
 }
 
-/* Botón de eliminar */
-.delete-btn {
-  background: #ff6b6b;
-  padding: 8px 14px;
-  font-size: 14px;
+/* Botón eliminar */
+.todo-item button {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.delete-btn:hover {
-  background: #e84141;
-  transform: scale(1.1);
+.todo-item button:hover {
+  background-color: #e04e4e;
+}
+
+/* Mensajes de error */
+.error {
+  color: #ff4d4f;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
