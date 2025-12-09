@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const apiUrl = "https://mi-backend.onrender.com";
+// URL base del backend (sin /todos)
+const apiBase = "https://todo-list-mda1.onrender.com";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -12,16 +13,17 @@ function App() {
   }, []);
 
   function cargarTareas() {
-    fetch(apiUrl)
+    fetch(`${apiBase}/todos`)
       .then((res) => res.json())
-      .then((data) => setTodos(data));
+      .then((data) => setTodos(data))
+      .catch((err) => console.error("❌ Error cargando tareas:", err));
   }
 
   function agregarTarea(e) {
     e.preventDefault();
     if (!title.trim()) return;
 
-    fetch(apiUrl, {
+    fetch(`${apiBase}/todos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title }),
@@ -30,21 +32,26 @@ function App() {
       .then(() => {
         setTitle("");
         cargarTareas();
-      });
+      })
+      .catch((err) => console.error("❌ Error agregando tarea:", err));
   }
 
   function actualizarTarea(id, completed) {
-    fetch(`${apiUrl}/${id}`, {
+    fetch(`${apiBase}/todos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ completed }),
-    }).then(() => cargarTareas());
+    })
+      .then(() => cargarTareas())
+      .catch((err) => console.error("❌ Error actualizando tarea:", err));
   }
 
   function eliminarTarea(id) {
-    fetch(`${apiUrl}/${id}`, {
+    fetch(`${apiBase}/todos/${id}`, {
       method: "DELETE",
-    }).then(() => cargarTareas());
+    })
+      .then(() => cargarTareas())
+      .catch((err) => console.error("❌ Error eliminando tarea:", err));
   }
 
   return (
@@ -68,9 +75,7 @@ function App() {
             <input
               type="checkbox"
               checked={todo.completed === 1}
-              onChange={(e) =>
-                actualizarTarea(todo.id, e.target.checked)
-              }
+              onChange={(e) => actualizarTarea(todo.id, e.target.checked)}
             />
 
             <span className={todo.completed === 1 ? "completed" : ""}>
